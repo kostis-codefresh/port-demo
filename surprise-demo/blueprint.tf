@@ -15,7 +15,7 @@ provider "port-labs" {
 resource "port-labs_blueprint" "artist" {
   title       = "Artist"
   icon        = "OpsGenie"
-  identifier  = "myBlueprint"
+  identifier  = "artist"
   description = "Music artist"
 
   properties {
@@ -30,8 +30,49 @@ resource "port-labs_blueprint" "artist" {
   }
   properties {
     identifier = "artistFormationDate"
-    title      = "Formet At"
+    title      = "Formed At"
     type       = "number"
   }
+}
+
+resource "port-labs_blueprint" "album" {
+  title       = "Album"
+  icon        = "Box"
+  identifier  = "album"
+  description = "Music album"
+
+  properties {
+    identifier = "albumName"
+    title      = "Album Name"
+    type       = "string"
+  }
+  properties {
+    identifier = "releaseDate"
+    title      = "released At"
+    type       = "number"
+  }
+}
+
+resource "port-labs_blueprint" "song" {
+  title       = "Song"
+  icon        = "Star"
+  identifier  = "song"
+  description = "Music song"
+
+  properties {
+    identifier = "songName"
+    title      = "Song Name"
+    type       = "string"
+  }
+  properties {
+    identifier = "trackNumber"
+    title      = "Track No"
+    type       = "number"
+  }
+  properties {
+    identifier = "duration"
+    title      = "Duration"
+    type       = "number"
+  }  
 }
 
