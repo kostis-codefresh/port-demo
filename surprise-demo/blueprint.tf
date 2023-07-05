@@ -33,6 +33,8 @@ resource "port-labs_blueprint" "artist" {
     title      = "Formed At"
     type       = "number"
   }
+
+
 }
 
 resource "port-labs_blueprint" "album" {
@@ -48,8 +50,15 @@ resource "port-labs_blueprint" "album" {
   }
   properties {
     identifier = "releaseDate"
-    title      = "released At"
+    title      = "Released At"
     type       = "number"
+  }
+
+  relations {
+    identifier = "releasedBy"
+    required   = true
+    target     = "artist"
+    title      = "Released by"
   }
 }
 
@@ -73,6 +82,13 @@ resource "port-labs_blueprint" "song" {
     identifier = "duration"
     title      = "Duration"
     type       = "number"
-  }  
+  }
+
+  relations {
+    identifier = "partOf"
+    required   = true
+    target     = "album"
+    title      = "Part of"
+  }
 }
 
