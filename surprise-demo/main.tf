@@ -13,15 +13,25 @@ provider "port-labs" {
 }
 
 resource "port-labs_blueprint" "myBlueprint" {
-  title      = "My blueprint"
-  icon       = "Codefresh"
+  title      = "Artist"
+  icon       = "OpsGenie"
   identifier = "myBlueprint"
-  description = "From terraform"
+  description = "Music artist"
 
    properties {
-    identifier  = "demoProp"
-    title = "Demo title"
+    identifier  = "artistName"
+    title = "Artist Name"
     type="string"
+  }
+     properties {
+    identifier  = "artistStyle"
+    title = "Artist Style"
+    type="string"
+  }
+     properties {
+    identifier  = "artistFormationDate"
+    title = "Formet At"
+    type="number"
   }
 }
 
@@ -31,7 +41,7 @@ resource "port-labs_entity" "myEntity" {
   blueprint  = port-labs_blueprint.myBlueprint.identifier
 
   properties {
-    name  = "demoProp"
+    name  = "artistName"
     value = "Example microservice"
   }
 #   properties {
