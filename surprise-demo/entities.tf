@@ -1,26 +1,92 @@
-resource "port-labs_entity" "myEntity" {
-  identifier = "myEntity"
-  title      = "My Entity"
+resource "port-labs_entity" "massiveAttack" {
+  identifier = "massiveAttack"
+  title      = "Massive Attack"
   blueprint  = port-labs_blueprint.artist.identifier
 
   properties {
     name  = "artistName"
-    value = "Example microservice"
+    value = "Massive Attack"
   }
-  #   properties {
-  #     name  = "myNumberProp"
-  #     value = 1
-  #   }
-  #   properties {
-  #     name  = "myArrayProp"
-  #     items = ["#rnd", "#deployments"]
-  #   }
-  #   properties {
-  #     name  = "myObjectProp"
-  #     value = jsonencode({ "foo" : "bar" })
-  #   }
-  #   properties {
-  #     name  = "myBoolProp"
-  #     value = true
-  #   }
+  properties {
+    name  = "artistStyle"
+    value = "Trip Hop"
+  }
+
+  properties {
+    name  = "artistCountry"
+    value = "England"
+  }
+  properties {
+    name  = "artistFormationDate"
+    value = "1998"
+  }
+}
+
+resource "port-labs_entity" "bonobo" {
+  identifier = "bonobo"
+  title      = "Bonobo"
+  blueprint  = port-labs_blueprint.artist.identifier
+
+  properties {
+    name  = "artistName"
+    value = "Bonobo"
+  }
+  properties {
+    name  = "artistStyle"
+    value = "Nu Jazz"
+  }
+  properties {
+    name  = "artistCountry"
+    value = "England"
+  }
+  properties {
+    name  = "artistFormationDate"
+    value = "1999"
+  }
+}
+
+resource "port-labs_entity" "apocalyptica" {
+  identifier = "apocalyptica"
+  title      = "Apocalyptica"
+  blueprint  = port-labs_blueprint.artist.identifier
+
+  properties {
+    name  = "artistName"
+    value = "Apocalyptica"
+  }
+  properties {
+    name  = "artistStyle"
+    value = "Symphonic metal"
+  }
+  properties {
+    name  = "artistCountry"
+    value = "Finland"
+  }
+  properties {
+    name  = "artistFormationDate"
+    value = "1993"
+  }
+}
+
+resource "port-labs_entity" "linkinpark" {
+  identifier = "linkinpark"
+  title      = "Linkin Park"
+  blueprint  = port-labs_blueprint.artist.identifier
+
+  properties {
+    name  = "artistName"
+    value = "Linkin Park"
+  }
+  properties {
+    name  = "artistStyle"
+    value = "Alternative Rock"
+  }
+  properties {
+    name  = "artistCountry"
+    value = "USA"
+  }
+  properties {
+    name  = "artistFormationDate"
+    value = "1996"
+  }
 }

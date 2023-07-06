@@ -24,6 +24,11 @@ resource "port-labs_blueprint" "artist" {
     type       = "string"
   }
   properties {
+    identifier = "artistCountry"
+    title      = "Artist Country"
+    type       = "string"
+  }  
+  properties {
     identifier = "artistStyle"
     title      = "Artist Style"
     type       = "string"
@@ -33,7 +38,6 @@ resource "port-labs_blueprint" "artist" {
     title      = "Formed At"
     type       = "number"
   }
-
 
 }
 
@@ -60,6 +64,7 @@ resource "port-labs_blueprint" "album" {
     target     = "artist"
     title      = "Released by"
   }
+
 }
 
 resource "port-labs_blueprint" "song" {
