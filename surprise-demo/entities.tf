@@ -25,25 +25,3 @@ resource "port-labs_entity" "apocalyptica" {
   }
 }
 
-resource "port-labs_entity" "linkinpark" {
-  identifier = "linkinpark"
-  title      = "Linkin Park"
-  blueprint  = port-labs_blueprint.artist.identifier
-
-  properties {
-    name  = "artistName"
-    value = "Linkin Park"
-  }
-  properties {
-    name  = "artistStyle"
-    value = "Alternative Rock"
-  }
-  properties {
-    name  = "artistCountry"
-    value = "USA"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1996"
-  }
-}
