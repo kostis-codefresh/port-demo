@@ -6,7 +6,7 @@ terraform {
     }
   }
 
-    backend "s3" {
+  backend "s3" {
     bucket = "kostis-terraform-state"
     key    = "port-surprise-demo"
     region = "us-east-1"
@@ -79,7 +79,7 @@ resource "port-labs_blueprint" "album" {
   relations {
     identifier = "releasedBy"
     required   = true
-    target     = "artist"
+    target     = port-labs_blueprint.artist.identifier
     title      = "Released by"
   }
 
@@ -110,7 +110,7 @@ resource "port-labs_blueprint" "song" {
   relations {
     identifier = "partOf"
     required   = true
-    target     = "album"
+    target     = port-labs_blueprint.album.identifier
     title      = "Part of"
   }
 }
