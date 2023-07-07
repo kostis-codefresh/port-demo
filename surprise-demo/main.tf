@@ -5,6 +5,12 @@ terraform {
       version = "~> 0.9.6"
     }
   }
+
+    backend "s3" {
+    bucket = "kostis-terraform-state"
+    key    = "port-surprise-demo"
+    region = "us-east-1"
+  }
 }
 
 provider "port-labs" {
