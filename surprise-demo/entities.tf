@@ -1,26 +1,4 @@
-resource "port-labs_entity" "massiveAttack" {
-  identifier = "massiveAttack"
-  title      = "Massive Attack"
-  blueprint  = port-labs_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Massive Attack"
-  }
-  properties {
-    name  = "artistStyle"
-    value = "Trip Hop"
-  }
-
-  properties {
-    name  = "artistCountry"
-    value = "England"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1998"
-  }
-}
 
 
 
