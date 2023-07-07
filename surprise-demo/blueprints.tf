@@ -27,7 +27,7 @@ resource "port-labs_blueprint" "artist" {
     identifier = "artistCountry"
     title      = "Artist Country"
     type       = "string"
-  }  
+  }
   properties {
     identifier = "artistStyle"
     title      = "Artist Style"
@@ -51,6 +51,18 @@ resource "port-labs_blueprint" "album" {
     identifier = "albumName"
     title      = "Album Name"
     type       = "string"
+  }
+  properties {
+    identifier = "type"
+    title      = "Type"
+    type       = "string"
+    enum       = ["single", "album", "demo"]
+    enum_colors = {
+      single = "yellow",
+      album  = "green",
+      demo   = "red",
+    }
+
   }
   properties {
     identifier = "releaseDate"

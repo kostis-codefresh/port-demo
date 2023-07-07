@@ -22,28 +22,7 @@ resource "port-labs_entity" "massiveAttack" {
   }
 }
 
-resource "port-labs_entity" "bonobo" {
-  identifier = "bonobo"
-  title      = "Bonobo"
-  blueprint  = port-labs_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Bonobo"
-  }
-  properties {
-    name  = "artistStyle"
-    value = "Nu Jazz"
-  }
-  properties {
-    name  = "artistCountry"
-    value = "England"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1999"
-  }
-}
 
 resource "port-labs_entity" "apocalyptica" {
   identifier = "apocalyptica"
