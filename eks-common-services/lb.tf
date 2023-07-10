@@ -16,10 +16,27 @@ output "load_balancer_address" {
   value       = data.kubernetes_service.nginx_service.status.0.load_balancer.0.ingress.0.hostname
 }
 
-# resource "aws_route53_record" "example" {
-#   zone_id = "data.aws_route53_zone.k8.zone_id"
-#   name    = "example"
-#   type    = "CNAME"
-#   ttl     = "300"
-#   records = [data.kubernetes_service.example.status.0.load_balancer.0.ingress.0.hostname]
-# }
+data "aws_route53_zone" "sales-dev" {
+  name         = "sales-dev.codefresh.io"
+}
+
+output "zone_id" {
+  description = "Zone ID"
+  value       = data.aws_route53_zone.sales-dev.zone_id
+}
+
+resource "aws_route53_record" "port-demo" {
+  zone_id = data.aws_route53_zone.sales-dev.zone_id
+  name    = "port.sales-dev.codefresh.io"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_service.nginx_service.status.0.load_balancer.0.ingress.0.hostname]
+}
+
+resource "aws_route53_record" "star-port-demo" {
+  zone_id = data.aws_route53_zone.sales-dev.zone_id
+  name    = "*.port.sales-dev.codefresh.io"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_service.nginx_service.status.0.load_balancer.0.ingress.0.hostname]
+}
