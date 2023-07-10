@@ -139,7 +139,7 @@ resource "port-labs_blueprint" "promotion" {
   properties {
     identifier = "when"
     title      = "When"
-    type       = "number"
+    type       = "string"
     format     = "date-time"
   }
   properties {
