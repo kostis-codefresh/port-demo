@@ -120,6 +120,12 @@ resource "port-labs_blueprint" "environment" {
     type       = "string"
     format     = "url"
   }
+  properties {
+    identifier = "version"
+    title      = "Version"
+    type       = "string"
+  }
+
 
 }
 
