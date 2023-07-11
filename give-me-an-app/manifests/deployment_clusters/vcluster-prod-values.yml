@@ -1,0 +1,8 @@
+syncer:
+  extraArgs:
+  - --tls-san=prod.port.sales-dev.codefresh.io
+fallbackHostDns: true
+ingress:
+  enabled: true
+  host: prod.port.sales-dev.codefresh.io
+  ingressClassName: nginx 
