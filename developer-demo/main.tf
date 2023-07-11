@@ -62,7 +62,7 @@ resource "port-labs_blueprint" "library" {
     type       = "string"
   }
 
-    properties {
+  properties {
     identifier = "libraryVersion"
     title      = "Library version"
     type       = "string"
@@ -110,10 +110,9 @@ resource "port-labs_blueprint" "environment" {
     type       = "string"
   }
   properties {
-    identifier = "ip"
-    title      = "IP"
+    identifier = "location"
+    title      = "Location"
     type       = "string"
-    format     = "ipv4"
   }
   properties {
     identifier = "grafana"
@@ -121,12 +120,6 @@ resource "port-labs_blueprint" "environment" {
     type       = "string"
     format     = "url"
   }
-  properties {
-    identifier = "kubeconfig"
-    title      = "KubeConfig"
-    type       = "object"
-  }
-
 
 }
 
