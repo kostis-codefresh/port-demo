@@ -1,89 +1,54 @@
-resource "port-labs_entity" "prod" {
+resource "port_entity" "prod" {
   identifier = "prod"
   title      = "Production"
   blueprint  = "environment"
 
+  properties = {
+    "string_props" = {
+      "environmentName" = "Production"
+      "region"          = "Europe"
+      "location"        = "prod.port.sales-dev.codefresh.io"
+      "grafana"         = "https://grafana.com/orgs/kostis"
+      "version"         = helm_release.target_vcluster_prod.version
+    }
 
-  properties {
-    name  = "environmentName"
-    value = "Production"
-  }
-  properties {
-    name  = "region"
-    value = "Europe"
-  }
-  properties {
-    name  = "location"
-    value = "prod.port.sales-dev.codefresh.io"
-  }
-  properties {
-    name  = "grafana"
-    value = "https://grafana.com/orgs/kostis"
-  }
-
-  properties {
-    name  = "version"
-    value = helm_release.target_vcluster_prod.version
   }
 
 }
 
-resource "port-labs_entity" "qa" {
+resource "port_entity" "qa" {
   identifier = "qa"
   title      = "QA"
   blueprint  = "environment"
 
 
-  properties {
-    name  = "environmentName"
-    value = "QA"
-  }
-  properties {
-    name  = "region"
-    value = "Asia"
-  }
-  properties {
-    name  = "location"
-    value = "qa.port.sales-dev.codefresh.io"
-  }
-  properties {
-    name  = "grafana"
-    value = "https://grafana.com/orgs/kostis"
-  }
+  properties = {
+    "string_props" = {
+      "environmentName" = "QA"
+      "region"          = "Asia"
+      "location"        = "qa.port.sales-dev.codefresh.io"
+      "grafana"         = "https://grafana.com/orgs/kostis"
+      "version"         = helm_release.target_vcluster_qa.version
+    }
 
-  properties {
-    name  = "version"
-    value = helm_release.target_vcluster_qa.version
   }
 
 }
 
-resource "port-labs_entity" "staging" {
+resource "port_entity" "staging" {
   identifier = "staging"
   title      = "Staging"
   blueprint  = "environment"
 
+  properties = {
+    "string_props" = {
+      "environmentName" = "Staging"
+      "region"          = "USA"
+      "location"        = "staging.port.sales-dev.codefresh.io"
+      "grafana"         = "https://grafana.com/orgs/kostis"
+      "version"         = helm_release.target_vcluster_staging.version
+    }
 
-  properties {
-    name  = "environmentName"
-    value = "Staging"
-  }
-  properties {
-    name  = "region"
-    value = "USA"
-  }
-  properties {
-    name  = "location"
-    value = "staging.port.sales-dev.codefresh.io"
-  }
-  properties {
-    name  = "grafana"
-    value = "https://grafana.com/orgs/kostis"
-  }
-
-  properties {
-    name  = "version"
-    value = helm_release.target_vcluster_staging.version
   }
 
 }

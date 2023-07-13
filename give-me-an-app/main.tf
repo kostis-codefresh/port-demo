@@ -6,9 +6,9 @@ terraform {
   }
 
   required_providers {
-    port-labs = {
+    port = {
       source  = "port-labs/port-labs"
-      version = "~> 0.9.6"
+      version = "~> 1.0.0"
     }
   }
 }
@@ -20,7 +20,7 @@ provider "helm" {
 
 }
 
-provider "port-labs" {
+provider "port" {
   client_id = var.port_client_id # or `PORT_CLIENT_ID`
   secret    = var.port_secret    # or `PORT_CLIENT_SECRET`
 }
