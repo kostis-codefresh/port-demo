@@ -8,7 +8,7 @@ on:
           general context (blueprint, run id, etc...)
         type: string
 jobs:
-  create-entity-in-port-and-update-run:
+  create-everything:
     runs-on: ubuntu-latest
     steps:
       - name: Create a log message
@@ -19,6 +19,12 @@ jobs:
           operation: PATCH_RUN
           runId: ${{fromJson(inputs.port_payload).context.runId}}
           logMessage: An example of a log message
+      - name: 'run Codefresh pipeline'
+        uses: codefresh-io/codefresh-pipeline-runner@v5
+        env:
+          PIPELINE_NAME: 'port-webinar/full-app-create'
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        id: run-pipeline          
       - name: Update action run status
         uses: port-labs/port-github-action@v1
         with:
