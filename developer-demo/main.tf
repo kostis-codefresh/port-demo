@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    port-labs = {
+    port = {
       source  = "port-labs/port-labs"
-      version = "~> 0.9.6"
+      version = "~> 1.0.0"
     }
   }
 
@@ -13,225 +13,236 @@ terraform {
   }
 }
 
-provider "port-labs" {
+provider "port" {
   client_id = var.port_client_id # or `PORT_CLIENT_ID`
   secret    = var.port_secret    # or `PORT_CLIENT_SECRET`
 }
 
-resource "port-labs_blueprint" "microservice" {
+resource "port_blueprint" "microservice" {
   title       = "Micro Service"
   icon        = "Microservice"
   identifier  = "microservice"
   description = "Company Microservice"
 
-  properties {
-    identifier = "serviceName"
-    title      = "Microservice name"
-    type       = "string"
-  }
-  properties {
-    identifier = "git"
-    title      = "GitHub Repo"
-    type       = "string"
-    format     = "url"
-  }
-  properties {
-    identifier = "description"
-    title      = "Description"
-    type       = "string"
+  properties = {
+    string_props = {
+      "serviceName" = {
+        title = "Microservice name"
+      }
+      "git" = {
+        title  = "GitHub Repo"
+        format = "url"
+      }
+      "description" = {
+        title = "Description"
+      }
+    }
+
   }
 
-  relations {
-    identifier = "deployedTo"
-    required   = false
-    target     = port-labs_blueprint.environment.identifier
-    title      = "Deployed To"
+
+  relations = {
+    "deployedTo" = {
+      title    = "Deployed To"
+      required = false
+      target   = port_blueprint.environment.identifier
+    }
   }
+
+
 
 }
 
-resource "port-labs_blueprint" "library" {
+resource "port_blueprint" "library" {
   title       = "Library"
   icon        = "SDK"
   identifier  = "library"
   description = "Company Approved Library"
 
-  properties {
-    identifier = "libraryName"
-    title      = "Library name"
-    type       = "string"
+
+  properties = {
+    string_props = {
+      "libraryName" = {
+        title = "Library name"
+      }
+      "libraryVersion" = {
+        title = "Library version"
+
+      }
+      "git" = {
+        title  = "GitHub Repo"
+        format = "url"
+      }
+      "pipeline" = {
+        title  = "CI pipeline"
+        format = "url"
+      }
+      "description" = {
+        title = "Description"
+      }
+    }
+
   }
 
-  properties {
-    identifier = "libraryVersion"
-    title      = "Library version"
-    type       = "string"
-  }
-  properties {
-    identifier = "git"
-    title      = "GitHub Repo"
-    type       = "string"
-    format     = "url"
-  }
-  properties {
-    identifier = "pipeline"
-    title      = "CI pipeline"
-    type       = "string"
-    format     = "url"
-  }
-  properties {
-    identifier = "description"
-    title      = "Description"
-    type       = "string"
+  relations = {
+    "usedBy" = {
+      title    = "Used By"
+      required = true
+      target   = port_blueprint.microservice.identifier
+    }
   }
 
-  relations {
-    identifier = "usedBy"
-    required   = true
-    target     = port-labs_blueprint.microservice.identifier
-    title      = "Used By"
-  }
+
+
 }
 
-resource "port-labs_blueprint" "environment" {
+resource "port_blueprint" "environment" {
   title       = "Environment"
   icon        = "Cloud"
   identifier  = "environment"
   description = "Deployment Environment"
 
-  properties {
-    identifier = "environmentName"
-    title      = "Environment name"
-    type       = "string"
-  }
-  properties {
-    identifier = "region"
-    title      = "Region"
-    type       = "string"
-  }
-  properties {
-    identifier = "location"
-    title      = "Location"
-    type       = "string"
-  }
-  properties {
-    identifier = "grafana"
-    title      = "Grafana Link"
-    type       = "string"
-    format     = "url"
-  }
-  properties {
-    identifier = "version"
-    title      = "Version"
-    type       = "string"
-  }
+  properties = {
+    string_props = {
+      "environmentName" = {
+        title = "Environment name"
+      }
+      "region" = {
+        title = "Region"
 
-
+      }
+      "grafana" = {
+        title  = "Grafana Link"
+        format = "url"
+      }
+      "location" = {
+        title  = "Location"
+        format = "url"
+      }
+      "version" = {
+        title = "Version"
+      }
+    }
+  }
 }
 
-resource "port-labs_blueprint" "promotion" {
+resource "port_blueprint" "promotion" {
   title       = "Promotion"
   icon        = "Day2Operation"
   identifier  = "promotion"
   description = "Promotion history"
 
-  properties {
-    identifier = "when"
-    title      = "When"
-    type       = "string"
-    format     = "date-time"
-  }
-  properties {
-    identifier = "approver"
-    title      = "Approved"
-    type       = "string"
-    format     = "user"
+
+  properties = {
+    string_props = {
+      "when" = {
+        title  = "When"
+        format = "date-time"
+      }
+      "approver" = {
+        title  = "Approver"
+        format = "user"
+
+      }
+    }
   }
 
-  relations {
-    identifier = "for"
-    required   = true
-    target     = port-labs_blueprint.microservice.identifier
-    title      = "For"
-  }
-  relations {
-    identifier = "source"
-    required   = false
-    target     = port-labs_blueprint.environment.identifier
-    title      = "From"
+  relations = {
+    "for" = {
+      title    = "For"
+      required = true
+      target   = port_blueprint.microservice.identifier
+    }
+    "source" = {
+      title    = "From"
+      required = false
+      target   = port_blueprint.environment.identifier
+    }
+    "target" = {
+      title    = "Target"
+      required = true
+      target   = port_blueprint.environment.identifier
+    }
   }
 
-  relations {
-    identifier = "target"
-    required   = true
-    target     = port-labs_blueprint.environment.identifier
-    title      = "Target"
-  }
+
+
 }
 
-resource "port-labs_blueprint" "build" {
+resource "port_blueprint" "build" {
   title       = "Build"
   icon        = "Codefresh"
   identifier  = "build"
   description = "Codefresh build"
 
-  properties {
-    identifier = "initiator"
-    title      = "Initiator"
-    type       = "string"
-    format     = "user"
-  }
-  properties {
-    identifier = "details"
-    title      = "Details"
-    type       = "string"
-    format     = "url"
+  properties = {
+    string_props = {
+      "details" = {
+        title  = "Details"
+        format = "url"
+      }
+      "initiator" = {
+        title  = "Initiator"
+        format = "user"
+
+      }
+    }
   }
 
-  relations {
-    identifier = "for"
-    required   = true
-    target     = port-labs_blueprint.microservice.identifier
-    title      = "For"
+  relations = {
+    "for" = {
+      title    = "For"
+      required = true
+      target   = port_blueprint.microservice.identifier
+    }
   }
+
+
+
+
 }
 
-resource "port-labs_blueprint" "deployment" {
+resource "port_blueprint" "deployment" {
   title       = "Deployment"
   icon        = "Deployment"
   identifier  = "deployment"
   description = "Deployment"
 
-  properties {
-    identifier = "version"
-    title      = "Version"
-    type       = "string"
-  }
-  properties {
-    identifier = "gitHash"
-    title      = "Git Hash"
-    type       = "string"
-    format     = "url"
+
+  properties = {
+    string_props = {
+      "Version" = {
+        title = "Version"
+      }
+      "gitHash" = {
+        title  = "Git Hash"
+        format = "url"
+
+      }
+      "details" = {
+        title  = "Details"
+        format = "url"
+
+      }
+    }
   }
 
-  properties {
-    identifier = "details"
-    title      = "Details"
-    type       = "string"
-    format     = "url"
+  relations = {
+    "for" = {
+      title    = "For"
+      required = true
+      target   = port_blueprint.microservice.identifier
+    }
+
+    "target" = {
+      title    = "Target"
+      required = true
+      target   = port_blueprint.environment.identifier
+    }
   }
 
-  relations {
-    identifier = "for"
-    required   = true
-    target     = port-labs_blueprint.microservice.identifier
-    title      = "For"
-  }
-  relations {
-    identifier = "target"
-    required   = true
-    target     = port-labs_blueprint.environment.identifier
-    title      = "Target"
-  }
+
+
+
 }
 
