@@ -116,7 +116,7 @@ resource "port_blueprint" "environment" {
         format = "url"
       }
       "location" = {
-        title  = "Location"
+        title = "Location"
       }
       "version" = {
         title = "Version"
