@@ -24,23 +24,25 @@ resource "port_entity" "mezzanine" {
   title      = "Mezzanine "
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Mezzanine"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "1998"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.massiveAttack.identifier
+
+  properties = {
+    "string_props" = {
+      "albumName" = "Mezzanine"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 1998
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.massiveAttack.identifier
+    }
+  }
+
+
 }
 
 
@@ -49,23 +51,23 @@ resource "port_entity" "ritualSpirit" {
   title      = "Ritual Spirit"
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Ritual Spirit"
-  }
-  properties {
-    name  = "type"
-    value = "single"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2016"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.massiveAttack.identifier
+    properties = {
+    "string_props" = {
+      "albumName" = "Ritual Spirit"
+      "type"      = "single"
+    }
+    "number_props" = {
+      "releaseDate" = 2016
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.massiveAttack.identifier
+    }
+  }
+
 }
 
 
@@ -76,23 +78,23 @@ resource "port_entity" "angel" {
   title      = "Angel"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Angel"
+    properties = {
+    "string_props" = {
+      "songName" = "Angel"
+    }
+    "number_props" = {
+      "trackNumber" = 1
+      "duration"    = 378
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "1"
-  }
-  properties {
-    name  = "duration"
-    value = "378"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.mezzanine.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.mezzanine.identifier
+    }
   }
+
+  
 }
 
 resource "port_entity" "risingson" {
@@ -100,23 +102,23 @@ resource "port_entity" "risingson" {
   title      = "Risingson"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Risingson"
+     properties = {
+    "string_props" = {
+      "songName" = "Risingson"
+    }
+    "number_props" = {
+      "trackNumber" = 2
+      "duration"    = 298
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "2"
-  }
-  properties {
-    name  = "duration"
-    value = "298"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.mezzanine.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.mezzanine.identifier
+    }
   }
+
+ 
 }
 
 resource "port_entity" "teardrop" {
@@ -124,23 +126,23 @@ resource "port_entity" "teardrop" {
   title      = "Teardrop"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Teardrop"
+    properties = {
+    "string_props" = {
+      "songName" = "Teardrop"
+    }
+    "number_props" = {
+      "trackNumber" = 3
+      "duration"    = 329
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "3"
-  }
-  properties {
-    name  = "duration"
-    value = "329"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.mezzanine.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.mezzanine.identifier
+    }
   }
+
+ 
 }
 
 resource "port_entity" "takeitthere" {
@@ -148,23 +150,23 @@ resource "port_entity" "takeitthere" {
   title      = "Take it There"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Take it There"
+   properties = {
+    "string_props" = {
+      "songName" = "Take it There"
+    }
+    "number_props" = {
+      "trackNumber" = 4
+      "duration"    = 271
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "4"
-  }
-  properties {
-    name  = "duration"
-    value = "271"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.ritualSpirit.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.ritualSpirit.identifier
+    }
   }
+
+ 
 }
 
 resource "port_entity" "deadEditors" {
@@ -172,23 +174,23 @@ resource "port_entity" "deadEditors" {
   title      = "Dead Editors"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Dead Editors"
+    properties = {
+    "string_props" = {
+      "songName" = "Dead Editors"
+    }
+    "number_props" = {
+      "trackNumber" = 1
+      "duration"    = 286
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "1"
-  }
-  properties {
-    name  = "duration"
-    value = "286"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.ritualSpirit.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.ritualSpirit.identifier
+    }
   }
+
+
 }
 
 
@@ -198,21 +200,21 @@ resource "port_entity" "voodoo" {
   title      = "Voodoo in my blood"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Voodoo in my blood"
+     properties = {
+    "string_props" = {
+      "songName" = "Voodoo in my blood"
+    }
+    "number_props" = {
+      "trackNumber" = 3
+      "duration"    = 241
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "3"
-  }
-  properties {
-    name  = "duration"
-    value = "241"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.ritualSpirit.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.ritualSpirit.identifier
+    }
   }
+
+ 
 }
