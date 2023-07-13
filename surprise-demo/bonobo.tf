@@ -22,23 +22,23 @@ resource "port_entity" "animalMagic" {
   title      = "Animal Magic"
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Animal Magic"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2000"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.bonobo.identifier
+  properties = {
+    "string_props" = {
+      "albumName" = "Animal Magic"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2000
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.bonobo.identifier
+    }
+  }
+
 }
 
 
@@ -47,23 +47,24 @@ resource "port_entity" "blackSands" {
   title      = "Black Sands"
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Black Sands"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2010"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.bonobo.identifier
+  properties = {
+    "string_props" = {
+      "albumName" = "Black Sands"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2010
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.bonobo.identifier
+    }
+  }
+
+
 }
 
 
@@ -74,23 +75,23 @@ resource "port_entity" "sleepySeven" {
   title      = "Sleepy Seven"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Sleepy Seven"
+  properties = {
+    "string_props" = {
+      "songName" = "Sleepy Seven"
+    }
+    "number_props" = {
+      "trackNumber" = 2
+      "duration"    = 319
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "2"
-  }
-  properties {
-    name  = "duration"
-    value = "319"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.animalMagic.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.animalMagic.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "dinosaurs" {
@@ -98,23 +99,22 @@ resource "port_entity" "dinosaurs" {
   title      = "Dinosaurs"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Dinosaurs"
+  properties = {
+    "string_props" = {
+      "songName" = "Dinosaurs"
+    }
+    "number_props" = {
+      "trackNumber" = 3
+      "duration"    = 237
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "3"
-  }
-  properties {
-    name  = "duration"
-    value = "237"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.animalMagic.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.animalMagic.identifier
+    }
   }
+
 }
 
 resource "port_entity" "kota" {
@@ -122,23 +122,23 @@ resource "port_entity" "kota" {
   title      = "Kota"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Kota"
+  properties = {
+    "string_props" = {
+      "songName" = "Kota"
+    }
+    "number_props" = {
+      "trackNumber" = 4
+      "duration"    = 341
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "4"
-  }
-  properties {
-    name  = "duration"
-    value = "341"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.animalMagic.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.animalMagic.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "prelude" {
@@ -146,23 +146,23 @@ resource "port_entity" "prelude" {
   title      = "Prelude"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Prelude"
+  properties = {
+    "string_props" = {
+      "songName" = "Prelude"
+    }
+    "number_props" = {
+      "trackNumber" = 1
+      "duration"    = 78
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "1"
-  }
-  properties {
-    name  = "duration"
-    value = "78"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.blackSands.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.blackSands.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "kiara" {
@@ -170,23 +170,23 @@ resource "port_entity" "kiara" {
   title      = "Kiara"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Kiara"
+  properties = {
+    "string_props" = {
+      "songName" = "Kiara"
+    }
+    "number_props" = {
+      "trackNumber" = 2
+      "duration"    = 230
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "2"
-  }
-  properties {
-    name  = "duration"
-    value = "230"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.blackSands.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.blackSands.identifier
+    }
   }
+
+
 }
 
 
@@ -196,21 +196,21 @@ resource "port_entity" "kong" {
   title      = "Kong"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Kong"
+  properties = {
+    "string_props" = {
+      "songName" = "Kong"
+    }
+    "number_props" = {
+      "trackNumber" = 3
+      "duration"    = 238
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "3"
-  }
-  properties {
-    name  = "duration"
-    value = "238"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.blackSands.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.blackSands.identifier
+    }
   }
+
+
 }

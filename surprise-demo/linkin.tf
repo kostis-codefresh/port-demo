@@ -24,23 +24,24 @@ resource "port_entity" "hybridTheory" {
   title      = "Hybrid Theory"
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Hybrid Theory"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2000"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.linkinpark.identifier
+  properties = {
+    "string_props" = {
+      "albumName" = "Hybrid Theory"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2000
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.linkinpark.identifier
+    }
+  }
+
+
 }
 
 
@@ -49,23 +50,24 @@ resource "port_entity" "meteora" {
   title      = "Meteora"
   blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Meteora"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2003"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port_entity.linkinpark.identifier
+  properties = {
+    "string_props" = {
+      "albumName" = "Meteora"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2003
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.linkinpark.identifier
+    }
+  }
+
+
 }
 
 
@@ -76,23 +78,23 @@ resource "port_entity" "papercut" {
   title      = "Papercut"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Papercut"
+  properties = {
+    "string_props" = {
+      "songName" = "Papercut"
+    }
+    "number_props" = {
+      "trackNumber" = 1
+      "duration"    = 184
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "1"
-  }
-  properties {
-    name  = "duration"
-    value = "184"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.hybridTheory.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.hybridTheory.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "onestepcloser" {
@@ -100,23 +102,23 @@ resource "port_entity" "onestepcloser" {
   title      = "One Step Closer"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "One Step Closer"
+  properties = {
+    "string_props" = {
+      "songName" = "One Step Closer"
+    }
+    "number_props" = {
+      "trackNumber" = 2
+      "duration"    = 155
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "2"
-  }
-  properties {
-    name  = "duration"
-    value = "155"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.hybridTheory.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.hybridTheory.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "points" {
@@ -124,23 +126,23 @@ resource "port_entity" "points" {
   title      = "Points of Authority"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Points of Authority"
+  properties = {
+    "string_props" = {
+      "songName" = "Points of Authority"
+    }
+    "number_props" = {
+      "trackNumber" = 4
+      "duration"    = 200
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "4"
-  }
-  properties {
-    name  = "duration"
-    value = "200"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.hybridTheory.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.hybridTheory.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "hitTheFloor" {
@@ -148,23 +150,23 @@ resource "port_entity" "hitTheFloor" {
   title      = "Hit The Floor"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Hit The Floor"
+  properties = {
+    "string_props" = {
+      "songName" = "Hit The Floor"
+    }
+    "number_props" = {
+      "trackNumber" = 5
+      "duration"    = 164
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "5"
-  }
-  properties {
-    name  = "duration"
-    value = "164"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.meteora.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.meteora.identifier
+    }
   }
+
+
 }
 
 resource "port_entity" "faint" {
@@ -172,23 +174,24 @@ resource "port_entity" "faint" {
   title      = "Faint"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Faint"
-  }
-  properties {
-    name  = "trackNumber"
-    value = "7"
-  }
-  properties {
-    name  = "duration"
-    value = "162"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.meteora.identifier
 
+  properties = {
+    "string_props" = {
+      "songName" = "Faint"
+    }
+    "number_props" = {
+      "trackNumber" = 7
+      "duration"    = 162
+    }
   }
+
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.meteora.identifier
+    }
+  }
+
+
 }
 
 
@@ -198,21 +201,22 @@ resource "port_entity" "numb" {
   title      = "Numb"
   blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Numb"
-  }
-  properties {
-    name  = "trackNumber"
-    value = "13"
-  }
-  properties {
-    name  = "duration"
-    value = "187"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port_entity.meteora.identifier
 
+  properties = {
+    "string_props" = {
+      "songName" = "Faint"
+    }
+    "number_props" = {
+      "trackNumber" = 13
+      "duration"    = 187
+    }
   }
+
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.meteora.identifier
+    }
+  }
+
+
 }
