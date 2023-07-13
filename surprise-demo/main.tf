@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    port-labs = {
+    port = {
       source  = "port-labs/port-labs"
-      version = "~> 0.9.6"
+      version = "~> 1.0.0"
     }
   }
 
@@ -13,105 +13,111 @@ terraform {
   }
 }
 
-provider "port-labs" {
+provider "port" {
   client_id = var.port_client_id # or `PORT_CLIENT_ID`
   secret    = var.port_secret    # or `PORT_CLIENT_SECRET`
 }
 
-resource "port-labs_blueprint" "artist" {
+resource "port_blueprint" "artist" {
   title       = "Artist"
   icon        = "OpsGenie"
   identifier  = "artist"
   description = "Music artist"
 
-  properties {
-    identifier = "artistName"
-    title      = "Artist Name"
-    type       = "string"
+  properties = {
+    string_props = {
+      "artistName" = {
+        title = "Artist Name"
+      }
+      "artistCountry" = {
+        title = "Artist Country"
+      }
+      "artistStyle" = {
+        title = "Artist Style"
+      }
+    }
+    number_props = {
+      "artistFormationDate" = {
+        title = "Formed At"
+      }
+    }
   }
-  properties {
-    identifier = "artistCountry"
-    title      = "Artist Country"
-    type       = "string"
-  }
-  properties {
-    identifier = "artistStyle"
-    title      = "Artist Style"
-    type       = "string"
-  }
-  properties {
-    identifier = "artistFormationDate"
-    title      = "Formed At"
-    type       = "number"
-  }
+
 
 }
 
-resource "port-labs_blueprint" "album" {
+resource "port_blueprint" "album" {
   title       = "Album"
   icon        = "Box"
   identifier  = "album"
   description = "Music album"
 
-  properties {
-    identifier = "albumName"
-    title      = "Album Name"
-    type       = "string"
-  }
-  properties {
-    identifier = "type"
-    title      = "Type"
-    type       = "string"
-    enum       = ["single", "album", "demo"]
-    enum_colors = {
-      single = "yellow",
-      album  = "green",
-      demo   = "red",
+
+  properties = {
+    string_props = {
+      "albumName" = {
+        title = "Album Name"
+      }
+      type = {
+        title = "Type"
+        enum  = ["single", "album", "demo"]
+        enum_colors = {
+          single = "yellow",
+          album  = "green",
+          demo   = "red",
+        }
+      }
     }
-
+    number_props = {
+      "releaseDate" = {
+        title = "Released At"
+      }
+    }
   }
-  properties {
-    identifier = "releaseDate"
-    title      = "Released At"
-    type       = "number"
-  }
 
-  relations {
-    identifier = "releasedBy"
-    required   = true
-    target     = port-labs_blueprint.artist.identifier
-    title      = "Released by"
+  relations = {
+    "releasedBy" = {
+      title    = "Released by"
+      required = true
+      target   = port_blueprint.artist.identifier
+    }
   }
 
 }
 
-resource "port-labs_blueprint" "song" {
+resource "port_blueprint" "song" {
   title       = "Song"
   icon        = "Star"
   identifier  = "song"
   description = "Music song"
 
-  properties {
-    identifier = "songName"
-    title      = "Song Name"
-    type       = "string"
-  }
-  properties {
-    identifier = "trackNumber"
-    title      = "Track No"
-    type       = "number"
-  }
-  properties {
-    identifier = "duration"
-    title      = "Duration"
-    type       = "number"
+
+  properties = {
+    string_props = {
+      "songName" = {
+        title = "Song Name"
+      }
+    }
+    number_props = {
+      "trackNumber" = {
+        title = "Track No"
+      }
+      "duration" = {
+        title = "Duration"
+      }
+    }
   }
 
-  relations {
-    identifier = "partOf"
-    required   = true
-    target     = port-labs_blueprint.album.identifier
-    title      = "Part of"
+  relations = {
+    "partOf" = {
+      title    = "Part of"
+      required = true
+      target   = port_blueprint.album.identifier
+    }
   }
+
+
+
+
 }
 

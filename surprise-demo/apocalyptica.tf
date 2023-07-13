@@ -1,222 +1,221 @@
-resource "port-labs_entity" "apocalyptica" {
+resource "port_entity" "apocalyptica" {
   identifier = "apocalyptica"
   title      = "Apocalyptica"
-  blueprint  = port-labs_blueprint.artist.identifier
+  blueprint  = port_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Apocalyptica"
+
+  properties = {
+    "string_props" = {
+      "artistName"    = "Apocalyptica"
+      "artistStyle"   = "Symphonic metal"
+      "artistCountry" = "Finland"
+    }
+    "number_props" = {
+      "artistFormationDate" = 1993
+    }
   }
-  properties {
-    name  = "artistStyle"
-    value = "Symphonic metal"
-  }
-  properties {
-    name  = "artistCountry"
-    value = "Finland"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1993"
-  }
+
+
+
 }
 
 ######################### Albums ##################
 
-resource "port-labs_entity" "worldsCollide" {
+resource "port_entity" "worldsCollide" {
   identifier = "worldsCollide"
   title      = "Worlds Collide"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Worlds Collide"
-  }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2007"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port-labs_entity.apocalyptica.identifier
+
+  properties = {
+    "string_props" = {
+      "albumName" = "Worlds Collide"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2007
+    }
 
   }
+
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.apocalyptica.identifier
+    }
+  }
+
 }
 
 
-resource "port-labs_entity" "shadowmaker" {
+resource "port_entity" "shadowmaker" {
   identifier = "shadowmaker"
   title      = "Shadowmaker"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
-  properties {
-    name  = "albumName"
-    value = "Shadowmaker"
+  properties = {
+    "string_props" = {
+      "albumName" = "Shadowmaker"
+      "type"      = "album"
+    }
+    "number_props" = {
+      "releaseDate" = 2015
+    }
   }
-  properties {
-    name  = "type"
-    value = "album"
-  }
-  properties {
-    name  = "releaseDate"
-    value = "2015"
-  }
-  relations {
-    name       = "releasedBy"
-    identifier = port-labs_entity.apocalyptica.identifier
 
+  relations = {
+    single_relations = {
+      "releasedBy" = port_entity.apocalyptica.identifier
+    }
   }
+
 }
 
 
 ######################### Songs ##################
 
-resource "port-labs_entity" "lastHope" {
+resource "port_entity" "lastHope" {
   identifier = "lastHope"
   title      = "Last Hope"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Last Hope"
-  }
-  properties {
-    name  = "trackNumber"
-    value = "7"
-  }
-  properties {
-    name  = "duration"
-    value = "287"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.worldsCollide.identifier
 
+  properties = {
+    "string_props" = {
+      "songName" = "Last Hope"
+    }
+    "number_props" = {
+      "trackNumber" = 7
+      "duration"    = 287
+    }
   }
+
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.worldsCollide.identifier
+    }
+  }
+
+
 }
 
-resource "port-labs_entity" "burn" {
+resource "port_entity" "burn" {
   identifier = "burn"
   title      = "Burn"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Burn"
+  properties = {
+    "string_props" = {
+      "songName" = "Burn"
+    }
+    "number_props" = {
+      "trackNumber" = 9
+      "duration"    = 256
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "9"
-  }
-  properties {
-    name  = "duration"
-    value = "256"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.worldsCollide.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.worldsCollide.identifier
+    }
   }
+
+
 }
 
-resource "port-labs_entity" "peace" {
+resource "port_entity" "peace" {
   identifier = "peace"
   title      = "Peace"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Peace"
+  properties = {
+    "string_props" = {
+      "songName" = "Peace"
+    }
+    "number_props" = {
+      "trackNumber" = 11
+      "duration"    = 349
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "11"
-  }
-  properties {
-    name  = "duration"
-    value = "349"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.worldsCollide.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.worldsCollide.identifier
+    }
   }
+
+
 }
 
-resource "port-labs_entity" "houseOfChains" {
+resource "port_entity" "houseOfChains" {
   identifier = "houseOfChains"
   title      = "House Of Chains"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "House Of Chains"
+  properties = {
+    "string_props" = {
+      "songName" = "House Of Chains"
+    }
+    "number_props" = {
+      "trackNumber" = 7
+      "duration"    = 208
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "7"
-  }
-  properties {
-    name  = "duration"
-    value = "208"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.shadowmaker.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.shadowmaker.identifier
+    }
   }
+
+
 }
 
-resource "port-labs_entity" "riotLights" {
+resource "port_entity" "riotLights" {
   identifier = "riotLights"
   title      = "Riot Lights"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Riot Lights"
+  properties = {
+    "string_props" = {
+      "songName" = "Riot Lights"
+    }
+    "number_props" = {
+      "trackNumber" = 8
+      "duration"    = 400
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "8"
-  }
-  properties {
-    name  = "duration"
-    value = "400"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.shadowmaker.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.shadowmaker.identifier
+    }
   }
+
+
 }
 
 
 
-resource "port-labs_entity" "seaSong" {
+resource "port_entity" "seaSong" {
   identifier = "seaSong"
   title      = "Kong"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
-  properties {
-    name  = "songName"
-    value = "Sea Song"
+  properties = {
+    "string_props" = {
+      "songName" = "Sea Song"
+    }
+    "number_props" = {
+      "trackNumber" = 10
+      "duration"    = 294
+    }
   }
-  properties {
-    name  = "trackNumber"
-    value = "10"
-  }
-  properties {
-    name  = "duration"
-    value = "294"
-  }
-  relations {
-    name       = "partOf"
-    identifier = port-labs_entity.shadowmaker.identifier
 
+  relations = {
+    single_relations = {
+      "partOf" = port_entity.shadowmaker.identifier
+    }
   }
+
+
 }
