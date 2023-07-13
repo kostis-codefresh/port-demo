@@ -1,33 +1,28 @@
-resource "port-labs_entity" "massiveAttack" {
+resource "port_entity" "massiveAttack" {
   identifier = "massiveAttack"
   title      = "Massive Attack"
-  blueprint  = port-labs_blueprint.artist.identifier
+  blueprint  = port_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Massive Attack"
-  }
-  properties {
-    name  = "artistStyle"
-    value = "Trip Hop"
+  properties = {
+    "string_props" = {
+      "artistName"    = "Massive Attack"
+      "artistStyle"   = "Trip Hop"
+      "artistCountry" = "England"
+    }
+    "number_props" = {
+      "artistFormationDate" = 1998
+    }
   }
 
-  properties {
-    name  = "artistCountry"
-    value = "England"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1998"
-  }
+
 }
 
 ######################### Albums ##################
 
-resource "port-labs_entity" "mezzanine" {
+resource "port_entity" "mezzanine" {
   identifier = "mezzanine"
   title      = "Mezzanine "
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -43,16 +38,16 @@ resource "port-labs_entity" "mezzanine" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.massiveAttack.identifier
+    identifier = port_entity.massiveAttack.identifier
 
   }
 }
 
 
-resource "port-labs_entity" "ritualSpirit" {
+resource "port_entity" "ritualSpirit" {
   identifier = "ritualSpirit"
   title      = "Ritual Spirit"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -68,7 +63,7 @@ resource "port-labs_entity" "ritualSpirit" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.massiveAttack.identifier
+    identifier = port_entity.massiveAttack.identifier
 
   }
 }
@@ -76,10 +71,10 @@ resource "port-labs_entity" "ritualSpirit" {
 
 ######################### Songs ##################
 
-resource "port-labs_entity" "angel" {
+resource "port_entity" "angel" {
   identifier = "angel"
   title      = "Angel"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -95,15 +90,15 @@ resource "port-labs_entity" "angel" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.mezzanine.identifier
+    identifier = port_entity.mezzanine.identifier
 
   }
 }
 
-resource "port-labs_entity" "risingson" {
+resource "port_entity" "risingson" {
   identifier = "risingson"
   title      = "Risingson"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -119,15 +114,15 @@ resource "port-labs_entity" "risingson" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.mezzanine.identifier
+    identifier = port_entity.mezzanine.identifier
 
   }
 }
 
-resource "port-labs_entity" "teardrop" {
+resource "port_entity" "teardrop" {
   identifier = "teardrop"
   title      = "Teardrop"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -143,15 +138,15 @@ resource "port-labs_entity" "teardrop" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.mezzanine.identifier
+    identifier = port_entity.mezzanine.identifier
 
   }
 }
 
-resource "port-labs_entity" "takeitthere" {
+resource "port_entity" "takeitthere" {
   identifier = "takeitthere"
   title      = "Take it There"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -167,15 +162,15 @@ resource "port-labs_entity" "takeitthere" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.ritualSpirit.identifier
+    identifier = port_entity.ritualSpirit.identifier
 
   }
 }
 
-resource "port-labs_entity" "deadEditors" {
+resource "port_entity" "deadEditors" {
   identifier = "deadEditors"
   title      = "Dead Editors"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -191,17 +186,17 @@ resource "port-labs_entity" "deadEditors" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.ritualSpirit.identifier
+    identifier = port_entity.ritualSpirit.identifier
 
   }
 }
 
 
 
-resource "port-labs_entity" "voodoo" {
+resource "port_entity" "voodoo" {
   identifier = "voodoo"
   title      = "Voodoo in my blood"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -217,7 +212,7 @@ resource "port-labs_entity" "voodoo" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.ritualSpirit.identifier
+    identifier = port_entity.ritualSpirit.identifier
 
   }
 }

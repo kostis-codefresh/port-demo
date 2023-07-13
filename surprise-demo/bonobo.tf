@@ -1,32 +1,26 @@
-resource "port-labs_entity" "bonobo" {
+resource "port_entity" "bonobo" {
   identifier = "bonobo"
   title      = "Bonobo"
-  blueprint  = port-labs_blueprint.artist.identifier
+  blueprint  = port_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Bonobo"
-  }
-  properties {
-    name  = "artistStyle"
-    value = "Nu Jazz"
-  }
-  properties {
-    name  = "artistCountry"
-    value = "England"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1999"
+  properties = {
+    "string_props" = {
+      "artistName"    = "Bonobo"
+      "artistStyle"   = "Nu Jazz"
+      "artistCountry" = "England"
+    }
+    "number_props" = {
+      "artistFormationDate" = 1999
+    }
   }
 }
 
 ######################### Albums ##################
 
-resource "port-labs_entity" "animalMagic" {
+resource "port_entity" "animalMagic" {
   identifier = "animalMagic"
   title      = "Animal Magic"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -42,16 +36,16 @@ resource "port-labs_entity" "animalMagic" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.bonobo.identifier
+    identifier = port_entity.bonobo.identifier
 
   }
 }
 
 
-resource "port-labs_entity" "blackSands" {
+resource "port_entity" "blackSands" {
   identifier = "blackSands"
   title      = "Black Sands"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -67,7 +61,7 @@ resource "port-labs_entity" "blackSands" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.bonobo.identifier
+    identifier = port_entity.bonobo.identifier
 
   }
 }
@@ -75,10 +69,10 @@ resource "port-labs_entity" "blackSands" {
 
 ######################### Songs ##################
 
-resource "port-labs_entity" "sleepySeven" {
+resource "port_entity" "sleepySeven" {
   identifier = "sleepySeven"
   title      = "Sleepy Seven"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -94,15 +88,15 @@ resource "port-labs_entity" "sleepySeven" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.animalMagic.identifier
+    identifier = port_entity.animalMagic.identifier
 
   }
 }
 
-resource "port-labs_entity" "dinosaurs" {
+resource "port_entity" "dinosaurs" {
   identifier = "dinosaurs"
   title      = "Dinosaurs"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -118,15 +112,15 @@ resource "port-labs_entity" "dinosaurs" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.animalMagic.identifier
+    identifier = port_entity.animalMagic.identifier
 
   }
 }
 
-resource "port-labs_entity" "kota" {
+resource "port_entity" "kota" {
   identifier = "kota"
   title      = "Kota"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -142,15 +136,15 @@ resource "port-labs_entity" "kota" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.animalMagic.identifier
+    identifier = port_entity.animalMagic.identifier
 
   }
 }
 
-resource "port-labs_entity" "prelude" {
+resource "port_entity" "prelude" {
   identifier = "prelude"
   title      = "Prelude"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -166,15 +160,15 @@ resource "port-labs_entity" "prelude" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.blackSands.identifier
+    identifier = port_entity.blackSands.identifier
 
   }
 }
 
-resource "port-labs_entity" "kiara" {
+resource "port_entity" "kiara" {
   identifier = "kiara"
   title      = "Kiara"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -190,17 +184,17 @@ resource "port-labs_entity" "kiara" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.blackSands.identifier
+    identifier = port_entity.blackSands.identifier
 
   }
 }
 
 
 
-resource "port-labs_entity" "kong" {
+resource "port_entity" "kong" {
   identifier = "kong"
   title      = "Kong"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -216,7 +210,7 @@ resource "port-labs_entity" "kong" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.blackSands.identifier
+    identifier = port_entity.blackSands.identifier
 
   }
 }

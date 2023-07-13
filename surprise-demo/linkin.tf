@@ -1,32 +1,28 @@
-resource "port-labs_entity" "linkinpark" {
+resource "port_entity" "linkinpark" {
   identifier = "linkinpark"
   title      = "Linkin Park"
-  blueprint  = port-labs_blueprint.artist.identifier
+  blueprint  = port_blueprint.artist.identifier
 
-  properties {
-    name  = "artistName"
-    value = "Linkin Park"
+  properties = {
+    "string_props" = {
+      "artistName"    = "Linkin Park"
+      "artistStyle"   = "Alternative Rock"
+      "artistCountry" = "USA"
+    }
+    "number_props" = {
+      "artistFormationDate" = 1996
+    }
   }
-  properties {
-    name  = "artistStyle"
-    value = "Alternative Rock"
-  }
-  properties {
-    name  = "artistCountry"
-    value = "USA"
-  }
-  properties {
-    name  = "artistFormationDate"
-    value = "1996"
-  }
+
+
 }
 
 ######################### Albums ##################
 
-resource "port-labs_entity" "hybridTheory" {
+resource "port_entity" "hybridTheory" {
   identifier = "hybridTheory"
   title      = "Hybrid Theory"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -42,16 +38,16 @@ resource "port-labs_entity" "hybridTheory" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.linkinpark.identifier
+    identifier = port_entity.linkinpark.identifier
 
   }
 }
 
 
-resource "port-labs_entity" "meteora" {
+resource "port_entity" "meteora" {
   identifier = "meteora"
   title      = "Meteora"
-  blueprint  = port-labs_blueprint.album.identifier
+  blueprint  = port_blueprint.album.identifier
 
   properties {
     name  = "albumName"
@@ -67,7 +63,7 @@ resource "port-labs_entity" "meteora" {
   }
   relations {
     name       = "releasedBy"
-    identifier = port-labs_entity.linkinpark.identifier
+    identifier = port_entity.linkinpark.identifier
 
   }
 }
@@ -75,10 +71,10 @@ resource "port-labs_entity" "meteora" {
 
 ######################### Songs ##################
 
-resource "port-labs_entity" "papercut" {
+resource "port_entity" "papercut" {
   identifier = "papercut"
   title      = "Papercut"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -94,15 +90,15 @@ resource "port-labs_entity" "papercut" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.hybridTheory.identifier
+    identifier = port_entity.hybridTheory.identifier
 
   }
 }
 
-resource "port-labs_entity" "onestepcloser" {
+resource "port_entity" "onestepcloser" {
   identifier = "onestepcloser"
   title      = "One Step Closer"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -118,15 +114,15 @@ resource "port-labs_entity" "onestepcloser" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.hybridTheory.identifier
+    identifier = port_entity.hybridTheory.identifier
 
   }
 }
 
-resource "port-labs_entity" "points" {
+resource "port_entity" "points" {
   identifier = "points"
   title      = "Points of Authority"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -142,15 +138,15 @@ resource "port-labs_entity" "points" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.hybridTheory.identifier
+    identifier = port_entity.hybridTheory.identifier
 
   }
 }
 
-resource "port-labs_entity" "hitTheFloor" {
+resource "port_entity" "hitTheFloor" {
   identifier = "hitTheFloor"
   title      = "Hit The Floor"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -166,15 +162,15 @@ resource "port-labs_entity" "hitTheFloor" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.meteora.identifier
+    identifier = port_entity.meteora.identifier
 
   }
 }
 
-resource "port-labs_entity" "faint" {
+resource "port_entity" "faint" {
   identifier = "faint"
   title      = "Faint"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -190,17 +186,17 @@ resource "port-labs_entity" "faint" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.meteora.identifier
+    identifier = port_entity.meteora.identifier
 
   }
 }
 
 
 
-resource "port-labs_entity" "numb" {
+resource "port_entity" "numb" {
   identifier = "numb"
   title      = "Numb"
-  blueprint  = port-labs_blueprint.song.identifier
+  blueprint  = port_blueprint.song.identifier
 
   properties {
     name  = "songName"
@@ -216,7 +212,7 @@ resource "port-labs_entity" "numb" {
   }
   relations {
     name       = "partOf"
-    identifier = port-labs_entity.meteora.identifier
+    identifier = port_entity.meteora.identifier
 
   }
 }
