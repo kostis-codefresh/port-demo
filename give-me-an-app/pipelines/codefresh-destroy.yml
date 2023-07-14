@@ -28,16 +28,16 @@ steps:
     commands:
       - kubectl config use-context port-real-cluster    
 
-  # DestroyResourcesWithTerraform:
-  #   image: hashicorp/terraform:1.3.7
-  #   title: "Removing pipelines"
-  #   working_directory: "${{clone}}" 
-  #   stage: pipelines
-  #   commands:
-  #     - cp -r /codefresh/volume/sensitive/.kube/ ~/.kube 
-  #     - cd create-pipelines
-  #     - terraform init
-  #     - terraform destroy -auto-approve
+  DestroyResourcesWithTerraform:
+    image: hashicorp/terraform:1.3.7
+    title: "Removing pipelines"
+    working_directory: "${{clone}}" 
+    stage: pipelines
+    commands:
+      - cp -r /codefresh/volume/sensitive/.kube/ ~/.kube 
+      - cd create-pipelines
+      - terraform init
+      - terraform destroy -auto-approve
       
   RemoveVirtualContext:
     image: codefresh/cli
