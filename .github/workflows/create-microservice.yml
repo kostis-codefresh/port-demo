@@ -18,7 +18,7 @@ jobs:
           clientSecret: ${{ secrets.CLIENT_SECRET }}
           operation: PATCH_RUN
           runId: ${{fromJson(inputs.port_payload).context.runId}}
-          logMessage: An example of a log message
+          logMessage: Creating your GitRepo, Environments and build/promote pipeline.
       - name: 'run Codefresh pipeline'
         uses: codefresh-io/codefresh-pipeline-runner@v5
         env:
@@ -33,4 +33,4 @@ jobs:
           operation: PATCH_RUN
           runId: ${{fromJson(inputs.port_payload).context.runId}}
           status: SUCCESS
-          logMessage: Workflow completed successfully
+          logMessage: Everything is ready. Just commit your code now
