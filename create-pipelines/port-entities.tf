@@ -31,8 +31,25 @@ resource "port_action" "build_app" {
     omitUserInputs       = true
     reportWorkflowStatus = true
   }
+}
 
+resource "port_action" "promote_app" {
+  title             = "Promote Application"
+  icon              = "Codefresh"
+  identifier        = "promote_staging"
+  blueprint         = "microservice"
+  trigger           = "DAY-2"
+  description       = "Promote to Staging"
+  required_approval = false
 
+  github_method = {
+    org                  = "kostis-codefresh"
+    repo                 = "port-demo"
+    workflow             = "promote-staging.yml"
+    omitPayload          = false
+    omitUserInputs       = true
+    reportWorkflowStatus = true
+  }
 }
 
 resource "port_entity" "apache_commons" {
