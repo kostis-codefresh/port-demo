@@ -1,0 +1,37 @@
+name: Promote to Staging
+on:
+  workflow_dispatch:
+    inputs:
+      port_payload:
+        required: true
+        description: Port's payload, including details for who triggered the action and
+          general context (blueprint, run id, etc...)
+        type: string
+jobs:
+  promote-to-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a log message
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.CLIENT_ID }}
+          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          operation: PATCH_RUN
+          runId: ${{fromJson(inputs.port_payload).context.runId}}
+          logMessage: Starting promotion from QA to Staging
+      - name: 'run Codefresh pipeline'
+        uses: codefresh-io/codefresh-pipeline-runner@v5
+        env:
+          PIPELINE_NAME: 'port-demo/promote-my-port-app'
+          TRIGGER_NAME: 'tags'
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        id: run-pipeline          
+      - name: Update action run status
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.CLIENT_ID }}
+          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          operation: PATCH_RUN
+          runId: ${{fromJson(inputs.port_payload).context.runId}}
+          status: SUCCESS
+          logMessage: Promotion to Staging Complete
