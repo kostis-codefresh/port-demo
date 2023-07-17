@@ -18,8 +18,8 @@ resource "port_action" "build_app" {
   title             = "Build Application"
   icon              = "Codefresh"
   identifier        = "build_deploy_qa"
-  blueprint         = "deployment"
-  trigger           = "CREATE"
+  blueprint         = "microservice"
+  trigger           = "DAY-2"
   description       = "Build application and deploy to QA"
   required_approval = false
 
