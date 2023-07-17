@@ -9,6 +9,7 @@ resource "port_entity" "prod" {
       "region"          = "Europe"
       "location"        = "prod.port.sales-dev.codefresh.io"
       "grafana"         = "https://grafana.com/orgs/kostis"
+      "codefresh"       = "https://g.codefresh.io/kubernetes/services/"
       "version"         = helm_release.target_vcluster_prod.version
     }
 
@@ -28,6 +29,7 @@ resource "port_entity" "qa" {
       "region"          = "Asia"
       "location"        = "qa.port.sales-dev.codefresh.io"
       "grafana"         = "https://grafana.com/orgs/kostis"
+      "codefresh"       = "https://g.codefresh.io/kubernetes/services/"
       "version"         = helm_release.target_vcluster_qa.version
     }
 
@@ -46,6 +48,7 @@ resource "port_entity" "staging" {
       "region"          = "USA"
       "location"        = "staging.port.sales-dev.codefresh.io"
       "grafana"         = "https://grafana.com/orgs/kostis"
+      "codefresh"       = "https://g.codefresh.io/kubernetes/services/"
       "version"         = helm_release.target_vcluster_staging.version
     }
 

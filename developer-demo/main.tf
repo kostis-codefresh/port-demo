@@ -115,6 +115,10 @@ resource "port_blueprint" "environment" {
         title  = "Grafana Link"
         format = "url"
       }
+      "codefresh" = {
+        title  = "Codefresh Link"
+        format = "url"
+      }      
       "location" = {
         title = "Location"
       }
@@ -182,7 +186,6 @@ resource "port_blueprint" "build" {
       }
       "initiator" = {
         title  = "Initiator"
-        format = "user"
 
       }
     }
@@ -215,7 +218,6 @@ resource "port_blueprint" "deployment" {
       }
       "gitHash" = {
         title  = "Git Hash"
-        format = "url"
 
       }
       "details" = {
