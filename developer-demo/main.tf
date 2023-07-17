@@ -40,17 +40,6 @@ resource "port_blueprint" "microservice" {
 
   }
 
-
-  relations = {
-    "deployedTo" = {
-      title    = "Deployed To"
-      required = false
-      target   = port_blueprint.environment.identifier
-    }
-  }
-
-
-
 }
 
 resource "port_blueprint" "library" {
