@@ -30,6 +30,10 @@ resource "codefresh_pipeline" "example-pipeline" {
       context  = "github-1"
     }
 
+    contexts = [
+      "port_credentials",
+
+    ]
 
     trigger {
       branch_regex = "/.*/gi"
