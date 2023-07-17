@@ -23,6 +23,7 @@ jobs:
         uses: codefresh-io/codefresh-pipeline-runner@v5
         env:
           PIPELINE_NAME: 'port-demo/build-my-port-app'
+          TRIGGER_NAME: 'commits'
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
         id: run-pipeline          
       - name: Update action run status
