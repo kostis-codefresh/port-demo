@@ -202,7 +202,7 @@ resource "port_blueprint" "deployment" {
 
   properties = {
     string_props = {
-      "Version" = {
+      "version" = {
         title = "Version"
       }
       "gitHash" = {
