@@ -107,7 +107,7 @@ resource "port_blueprint" "environment" {
       "codefresh" = {
         title  = "Codefresh Link"
         format = "url"
-      }      
+      }
       "location" = {
         title = "Location"
       }
@@ -127,15 +127,17 @@ resource "port_blueprint" "promotion" {
 
   properties = {
     string_props = {
-      "when" = {
-        title  = "When"
-        format = "date-time"
+      "details" = {
+        title  = "Details"
+        format = "url"
       }
       "approver" = {
-        title  = "Approver"
-        format = "user"
-
+        title = "Approver"
       }
+      "dashboard" = {
+        title  = "Dashboard"
+        format = "url"
+      }      
     }
   }
 
@@ -174,7 +176,7 @@ resource "port_blueprint" "build" {
         format = "url"
       }
       "initiator" = {
-        title  = "Initiator"
+        title = "Initiator"
 
       }
     }
@@ -206,7 +208,7 @@ resource "port_blueprint" "deployment" {
         title = "Version"
       }
       "gitHash" = {
-        title  = "Git Hash"
+        title = "Git Hash"
 
       }
       "details" = {
