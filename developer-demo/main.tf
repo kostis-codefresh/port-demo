@@ -62,8 +62,8 @@ resource "port_blueprint" "library" {
         title  = "GitHub Repo"
         format = "url"
       }
-      "pipeline" = {
-        title  = "CI pipeline"
+      "website" = {
+        title  = "Website"
         format = "url"
       }
       "description" = {
