@@ -23,7 +23,6 @@ steps:
     working_directory: "${{clone}}" 
     stage: blueprint
     commands:
-      - cp -r /codefresh/volume/sensitive/.kube/ ~/.kube 
       - cd surprise-demo
       - terraform init
       - terraform apply -auto-approve
